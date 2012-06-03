@@ -2,13 +2,13 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Digit Recog" />
+		<Option title="DigitRecog" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/Digit Recog" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
+				<Option output="bin\Debug\DigitRecog" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Debug\" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
@@ -17,8 +17,8 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/Digit Recog" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
+				<Option output="bin\Release\DigitRecog" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Release\" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
@@ -31,19 +31,22 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="`wx-config --cflags`" />
 			<Add option="-Wall" />
+			<Add option="`wx-config --cflags`" />
+			<Add directory="..\include" />
 		</Compiler>
 		<Linker>
 			<Add option="`wx-config --libs`" />
 		</Linker>
-		<Unit filename="Board.cpp" />
-		<Unit filename="Board.h" />
-		<Unit filename="Digit_RecogApp.cpp" />
-		<Unit filename="Digit_RecogApp.h" />
 		<Unit filename="WxWizFrame.fbp" />
-		<Unit filename="noname.cpp" />
-		<Unit filename="noname.h" />
+		<Unit filename="..\include\Board.h" />
+		<Unit filename="..\include\DigitRecog.h" />
+		<Unit filename="..\include\GUIFrame.h" />
+		<Unit filename="..\include\MainFrame.h" />
+		<Unit filename="..\src\Board.cpp" />
+		<Unit filename="..\src\DigitRecog.cpp" />
+		<Unit filename="..\src\GUIFrame.cpp" />
+		<Unit filename="..\src\MainFrame.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

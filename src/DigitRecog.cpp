@@ -15,8 +15,8 @@
 #pragma hdrstop
 #endif //__BORLANDC__
 
-#include "noname.h"
-#include "Digit_RecogApp.h"
+#include "MainFrame.h"
+#include "DigitRecog.h"
 
 IMPLEMENT_APP(Digit_RecogApp);
 

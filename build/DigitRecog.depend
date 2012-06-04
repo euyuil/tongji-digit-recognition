@@ -1484,3 +1484,61 @@
 	"Board.h"
 	"noname.h"
 
+1338783720 source:/home/yue/digitrecog/src/Board.cpp
+	<cstdio>
+	"Board.h"
+
+1338783731 /home/yue/digitrecog/include/Board.h
+	<wx/wx.h>
+
+1338780439 source:/home/yue/digitrecog/src/DigitRecog.cpp
+	"wx_pch.h"
+	"MainFrame.h"
+	"DigitRecog.h"
+
+1338780439 /home/yue/digitrecog/include/MainFrame.h
+	<wx/string.h>
+	<wx/bitmap.h>
+	<wx/image.h>
+	<wx/icon.h>
+	<wx/gdicmn.h>
+	<wx/toolbar.h>
+	<wx/font.h>
+	<wx/colour.h>
+	<wx/settings.h>
+	<wx/statusbr.h>
+	<wx/stattext.h>
+	<wx/panel.h>
+	<wx/sizer.h>
+	<wx/frame.h>
+
+1338780439 /home/yue/digitrecog/include/DigitRecog.h
+	<wx/app.h>
+
+1338780439 source:/home/yue/digitrecog/src/GUIFrame.cpp
+	"wx/wxprec.h"
+	<wx/wx.h>
+	"GUIFrame.h"
+
+1329067902 /usr/include/wx-2.8/wx/wxprec.h
+	"wx/defs.h"
+	"wx/wxchar.h"
+	"wx/msw/wrapwin.h"
+	"wx/msw/wrapcctl.h"
+	"wx/msw/wrapcdlg.h"
+	"wx/msw/private.h"
+	"wx/msw/missing.h"
+	<PalmOS.h>
+	"wx/os2/private.h"
+	"wx/mgl/private.h"
+	"wx/wx.h"
+
+1338780439 /home/yue/digitrecog/include/GUIFrame.h
+	<wx_pch.h>
+	<wx/wx.h>
+	<wx/menu.h>
+
+1338780439 source:/home/yue/digitrecog/src/MainFrame.cpp
+	"Board.h"
+	"MainFrame.h"
+

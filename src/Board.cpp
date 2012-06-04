@@ -1,3 +1,5 @@
+#include <cstdio>
+using namespace std;
 #include "Board.h"
 
 Board::Board(wxFrame *parent)
@@ -43,7 +45,7 @@ void Board::OnMouseMoveEvent(wxMouseEvent& event)
         int x,y;
         convertPosition(event.GetX(),event.GetY(),x,y);
         data[x][y] = '*';
-        updateDrawing();
+        IncrementDrawing(x, y);
     }
 
 }
@@ -58,13 +60,33 @@ void Board::OnMouseLeftDownEvent(wxMouseEvent& event)
     mouseDown = true;
 }
 
-void Board::updateDrawing()
+void Board::IncrementDrawing(int x, int y)
 {
-    wxPaintDC dc(this);
+    wxClientDC dc(this);
 
-    wxSize size = GetClientSize();
+    // wxSize size = GetClientSize();
 
-    dc.Clear();
+    // dc.Clear();
+    PrepareDC(dc);
+
+    wxPen pen(wxColour(0, 0, 0));
+    pen.SetCap(wxCAP_PROJECTING);
+    dc.SetPen(pen);
+    dc.SetBrush(*wxBLACK_BRUSH);
+
+    float w = width / w_cells;
+    float h = height / h_cells;
+
+    dc.DrawRectangle( w * x, h * y, w, h );
+}
+
+void Board::CompleteDrawing()
+{
+    wxClientDC dc(this);
+
+    // wxSize size = GetClientSize();
+
+    // dc.Clear();
     PrepareDC(dc);
 
     wxPen pen(wxColour(0, 0, 0));
@@ -100,6 +122,7 @@ void Board::convertPosition(int x,int y,int &cell_x,int &cell_y)
 
 void Board::OnPaint(wxPaintEvent& event)
 {
-    updateDrawing();
+    printf("onpaint\n");
+    CompleteDrawing();
 }
 

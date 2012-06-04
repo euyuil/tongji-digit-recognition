@@ -26,7 +26,8 @@ protected:
 
     void convertPosition(int x,int y,int &cell_x,int &cell_y);
 
-    void updateDrawing();
+    void CompleteDrawing();
+    void IncrementDrawing(int x, int y);
 
 private:
     wxStatusBar *m_stsbar;

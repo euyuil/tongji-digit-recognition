@@ -14,5 +14,7 @@
 # Binary Folders
 /bin
 /tmp
+/obj
 /build/bin
 /build/tmp
+/build/obj

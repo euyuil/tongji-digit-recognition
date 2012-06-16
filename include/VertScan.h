@@ -18,6 +18,6 @@ typedef double VS_COMP_RESULT;
 
 VS_RESULT VertScan(const char *c, unsigned int w, unsigned int h);
 VS_NORM_RESULT VertScanNormalize(const VS_RESULT &r);
-VS_COMP_RESULT VertScanCompare(const VS_COMP_RESULT &, const VS_COMP_RESULT &);
+VS_COMP_RESULT VertScanCompare(const VS_NORM_RESULT &, const VS_NORM_RESULT &);
 
 #endif /* _VERT_SCAN_H_ */

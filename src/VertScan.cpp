@@ -1,3 +1,7 @@
+#include <algorithm>
+
+using namespace std;
+
 #include <VertScan.h>
 
 /**
@@ -75,7 +79,33 @@ VS_NORM_RESULT VertScanNormalize(const VS_RESULT &r)
     return result;
 }
 
-VS_COMP_RESULT VertScanCompare(const VS_COMP_RESULT &, const VS_COMP_RESULT &)
+/**
+ * Vertical scanning comparing algorithm for digital recognizing.
+ * TODO Test this function.
+ * @author EUYUIL
+ * @date 2012-06-19
+ */
+
+VS_COMP_RESULT VertScanCompare(const VS_NORM_RESULT &a, const VS_NORM_RESULT &b)
 {
-    // TODO VertScanCompare
+    VS_COMP_RESULT result = 0.0;
+    double last = 0.0, x = 0.0, y = 0.0;
+    unsigned int i = 0, j = 0;
+
+    do {
+        double nx = x + a[i].first;
+        double ny = y + b[j].first;
+        double nm = min(nx, ny);
+
+        if (a[i].second == b[j].second)
+            result += nm - last;
+
+        if (nx < ny) ++i;
+        else ++j;
+
+        last = nm;
+
+    } while (i < a.size() && j < b.size());
+
+    return result;
 }

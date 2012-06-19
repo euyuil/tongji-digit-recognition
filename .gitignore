@@ -18,3 +18,5 @@
 /build/bin
 /build/tmp
 /build/obj
+
+.DS_Store

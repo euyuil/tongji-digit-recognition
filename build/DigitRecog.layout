@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="../include/Board.h" open="0" top="0" tabpos="0">
-		<Cursor position="197" topLine="5" />
+	<File name="../include/Board.h" open="1" top="0" tabpos="8">
+		<Cursor position="425" topLine="12" />
 	</File>
-	<File name="../include/GUIFrame.h" open="0" top="0" tabpos="0">
-		<Cursor position="698" topLine="15" />
+	<File name="../include/DerivedMainFrame.h" open="1" top="0" tabpos="9">
+		<Cursor position="98" topLine="0" />
 	</File>
-	<File name="../include/MainFrame.h" open="0" top="0" tabpos="0">
-		<Cursor position="538" topLine="27" />
+	<File name="../include/DigitRecog.h" open="1" top="0" tabpos="7">
+		<Cursor position="359" topLine="2" />
 	</File>
-	<File name="../src/Board.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1164" topLine="31" />
+	<File name="../include/GUIFrame.h" open="1" top="0" tabpos="5">
+		<Cursor position="1682" topLine="36" />
 	</File>
-	<File name="../src/DigitRecog.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="398" topLine="9" />
+	<File name="../include/MainFrame.h" open="1" top="0" tabpos="4">
+		<Cursor position="1222" topLine="44" />
 	</File>
-	<File name="../src/GUIFrame.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="755" topLine="16" />
+	<File name="../src/Board.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="521" topLine="0" />
 	</File>
-	<File name="../src/MainFrame.cpp" open="0" top="0" tabpos="0">
+	<File name="../src/DerivedMainFrame.cpp" open="1" top="0" tabpos="10">
+		<Cursor position="31" topLine="0" />
+	</File>
+	<File name="../src/DigitRecog.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="593" topLine="13" />
+	</File>
+	<File name="../src/GUIFrame.cpp" open="1" top="0" tabpos="2">
 		<Cursor position="335" topLine="0" />
+	</File>
+	<File name="../src/MainFrame.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="324" topLine="3" />
+	</File>
+	<File name="../src/VertScan.cpp" open="1" top="1" tabpos="11">
+		<Cursor position="154" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

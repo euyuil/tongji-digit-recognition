@@ -30,8 +30,10 @@ protected:
     void IncrementDrawing(int x, int y);
 
 private:
+    void draw_line(int x1, int y1, int x2, int y2);
     wxStatusBar *m_stsbar;
     bool mouseDown;
+    int startPaintingX,startPaintingY;
     char data[w_cells][h_cells];
 };
 

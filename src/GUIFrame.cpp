@@ -4,7 +4,7 @@
 //
 // PLEASE DO "NOT" EDIT THIS FILE!
 ///////////////////////////////////////////////////////////////////////////
-
+/*
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -27,7 +27,7 @@ END_EVENT_TABLE()
 GUIFrame::GUIFrame( wxWindow* parent, int id, wxString title, wxPoint pos, wxSize size, int style ) : wxFrame( parent, id, title, pos, size, style )
 {
     this->SetSizeHints( wxDefaultSize, wxDefaultSize );
-    
+
     mbar = new wxMenuBar( 0 );
     wxMenu* fileMenu;
     fileMenu = new wxMenu();
@@ -40,6 +40,7 @@ GUIFrame::GUIFrame( wxWindow* parent, int id, wxString title, wxPoint pos, wxSiz
     helpMenu->Append( menuHelpAbout );
     mbar->Append( helpMenu, wxT("&Help") );
     this->SetMenuBar( mbar );
-    
+
     statusBar = this->CreateStatusBar( 2, wxST_SIZEGRIP, wxID_ANY );
 }
+*/

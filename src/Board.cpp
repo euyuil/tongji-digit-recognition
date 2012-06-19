@@ -28,6 +28,7 @@ void Board::cleanCanvas()
             data[i][j] = ' ';
         }
     }
+    CompleteDrawing();
 }
 
 void Board::OnMouseMoveEvent(wxMouseEvent& event)
@@ -58,15 +59,16 @@ void Board::OnMouseLeftUpEvent(wxMouseEvent& event)
 void Board::OnMouseLeftDownEvent(wxMouseEvent& event)
 {
     mouseDown = true;
+    convertPosition(event.GetX(),event.GetY(),startPaintingX,startPaintingY);
 }
 
-void Board::IncrementDrawing(int x, int y)
+
+
+// DDA's line algorithm
+void Board::draw_line(int x0, int y0, int x1, int y1)
 {
     wxClientDC dc(this);
 
-    // wxSize size = GetClientSize();
-
-    // dc.Clear();
     PrepareDC(dc);
 
     wxPen pen(wxColour(0, 0, 0));
@@ -77,7 +79,32 @@ void Board::IncrementDrawing(int x, int y)
     float w = width / w_cells;
     float h = height / h_cells;
 
-    dc.DrawRectangle( w * x, h * y, w, h );
+
+	int dx,dy,n,k;float xinc,yinc,x,y;
+	dx=x1-x0;dy=y1-y0;
+	if (abs(dx)>abs(dy))
+		n=abs(dx);
+	else
+		n=abs(dy);
+	xinc=(float)dx/n;	yinc=(float)dy/n;
+	x=(float)x0;y=(float)y0;
+	for (k=1;k<=n;k++)
+	{
+		//Drawpixel(int (x+0.5),int (y+0.5),color);
+		dc.DrawRectangle( w * int (x+0.5), h * int (y+0.5), w, h );
+
+		x+=xinc;	y+=yinc;
+	}
+
+}
+
+
+
+void Board::IncrementDrawing(int x, int y)
+{
+    draw_line(startPaintingX,startPaintingY,x,y);
+    startPaintingX = x;
+    startPaintingY = y;
 }
 
 void Board::CompleteDrawing()
@@ -86,7 +113,7 @@ void Board::CompleteDrawing()
 
     // wxSize size = GetClientSize();
 
-    // dc.Clear();
+    dc.Clear();
     PrepareDC(dc);
 
     wxPen pen(wxColour(0, 0, 0));
@@ -104,7 +131,6 @@ void Board::CompleteDrawing()
             if(data[i][j] != ' ')
             {
                 dc.DrawRectangle( w * i, h * j, w, h );
-
             }
         }
     }

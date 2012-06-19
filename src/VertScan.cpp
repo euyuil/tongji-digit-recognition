@@ -62,7 +62,7 @@ VS_NORM_RESULT VertScanNormalize(const VS_RESULT &r)
                     flag = false;
             }
             else
-                flag == false;
+                flag = false;
 
             if (!flag)
             {

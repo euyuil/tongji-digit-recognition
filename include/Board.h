@@ -3,11 +3,11 @@
 
 #include <wx/wx.h>
 
-#define width 600
-#define height 220
+#define width 300
+#define height 396
 
 #define w_cells 50
-#define h_cells 20
+#define h_cells 66
 
 class Board : public wxPanel
 {
@@ -30,8 +30,10 @@ protected:
     void IncrementDrawing(int x, int y);
 
 private:
+    void draw_line(int x1, int y1, int x2, int y2);
     wxStatusBar *m_stsbar;
     bool mouseDown;
+    int startPaintingX,startPaintingY;
     char data[w_cells][h_cells];
 };
 

@@ -15,10 +15,12 @@
 #pragma hdrstop
 #endif //__BORLANDC__
 
-#include "MainFrame.h"
+#include "DerivedMainFrame.h"
 #include "DigitRecog.h"
+#include "MainFrame.h"
 
 IMPLEMENT_APP(Digit_RecogApp);
+
 
 bool Digit_RecogApp::OnInit()
 {

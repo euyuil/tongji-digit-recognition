@@ -42,11 +42,17 @@
 		</Linker>
 		<Unit filename="WxWizFrame.fbp" />
 		<Unit filename="../include/Board.h" />
+		<Unit filename="../include/DerivedMainFrame.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="../include/DigitRecog.h" />
 		<Unit filename="../include/GUIFrame.h" />
 		<Unit filename="../include/MainFrame.h" />
 		<Unit filename="../include/VertScan.h" />
 		<Unit filename="../src/Board.cpp" />
+		<Unit filename="../src/DerivedMainFrame.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="../src/DigitRecog.cpp" />
 		<Unit filename="../src/GUIFrame.cpp" />
 		<Unit filename="../src/MainFrame.cpp" />

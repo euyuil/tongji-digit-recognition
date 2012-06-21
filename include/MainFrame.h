@@ -56,6 +56,7 @@ class MainFrame : public wxFrame
 		wxStatusBar* m_statusBar1;
 		wxToolBar* m_toolBar3;
 		wxStaticText* m_resultLabel;
+		wxStaticText* m_staticText5;
 		Board* m_panel2;
 		wxMenuBar* m_menubar1;
 		wxMenu* Menu_Edit;

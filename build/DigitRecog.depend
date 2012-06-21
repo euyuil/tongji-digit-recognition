@@ -1563,7 +1563,7 @@
 	"DigitRecog.h"
 	"MainFrame.h"
 
-1340291251 /home/song/digitrecog/include/MainFrame.h
+1340294373 /home/song/digitrecog/include/MainFrame.h
 	<wx/statusbr.h>
 	<wx/gdicmn.h>
 	<wx/font.h>
@@ -1593,7 +1593,7 @@
 	<wx/wx.h>
 	<wx/menu.h>
 
-1340290446 source:/home/song/digitrecog/src/MainFrame.cpp
+1340294347 source:/home/song/digitrecog/src/MainFrame.cpp
 	"Board.h"
 	"Recognize.h"
 	"MainFrame.h"
@@ -1609,19 +1609,24 @@
 	"wx/app.h"
 	"wx/icon.h"
 
-1340114075 source:/home/song/digitrecog/src/VertScan.cpp
+1340291617 source:/home/song/digitrecog/src/VertScan.cpp
+	<cstdio>
 	<algorithm>
 	<VertScan.h>
+	<RecogUtils.h>
 
 1340112229 /home/song/digitrecog/include/VertScan.h
 	<vector>
 	<utility>
 
-1340267338 source:/home/song/digitrecog/src/Recognize.cpp
+1340291617 source:/home/song/digitrecog/src/Recognize.cpp
 	<cstdio>
 	<vector>
 	<VertScan.h>
+	<HoriScan.h>
 	<Recognize.h>
+	<RecogUtils.h>
+	<Characteristic.h>
 
 1340268556 /home/song/digitrecog/include/Recognize.h
 
@@ -1681,4 +1686,31 @@
 1329067903 /usr/include/wx-2.8/wx/generic/splitter.h
 	"wx/window.h"
 	"wx/containr.h"
+
+1340291617 source:/home/song/digitrecog/src/Characteristic.cpp
+	<cstdio>
+	<utility>
+	<Characteristic.h>
+
+1340291617 /home/song/digitrecog/include/Characteristic.h
+	<cstdio>
+	<VertScan.h>
+	<HoriScan.h>
+
+1340291617 /home/song/digitrecog/include/HoriScan.h
+	<vector>
+	<utility>
+
+1340291617 source:/home/song/digitrecog/src/HoriScan.cpp
+	<cstdio>
+	<algorithm>
+	<HoriScan.h>
+	<RecogUtils.h>
+
+1340291617 /home/song/digitrecog/include/RecogUtils.h
+
+1340291617 source:/home/song/digitrecog/src/RecogUtils.cpp
+	<climits>
+	<algorithm>
+	<RecogUtils.h>
 

@@ -65,8 +65,6 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
 
 	m_statusBar1 = this->CreateStatusBar( 1, wxST_SIZEGRIP, wxID_ANY );
 	m_toolBar3 = this->CreateToolBar( wxTB_HORIZONTAL, wxID_ANY );
-	m_toolBar3->AddTool( wxID_CleanToolbar, wxT("Clean"), wxBitmap( wxT("res/edit_clear.png") ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString );
-    m_toolBar3->AddSeparator();
 	//m_toolBar3->AddTool( wxID_LearnToolbar, wxT("Learn"), wxBitmap( wxT("res/learn.png") ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString );
 
     m_toolBar3->Realize();
@@ -79,11 +77,24 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
 	gSizer1 = new wxGridSizer( 2, 2, 0, 0 );
 
 
+    wxFlexGridSizer* fgSizer4;
+	fgSizer4 = new wxFlexGridSizer( 2, 2, 0, 0 );
+	fgSizer4->SetFlexibleDirection( wxBOTH );
+	fgSizer4->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText5 = new wxStaticText( this, wxID_ANY, wxT("             "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText5->Wrap( -1 );
+	fgSizer4->Add( m_staticText5, 0, wxALL, 5 );
+
+
 	m_resultLabel = new wxStaticText( this, wxID_ANY, wxT("?"), wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT );
 	m_resultLabel->Wrap( -1 );
-	m_resultLabel->SetFont( wxFont( 230, 70, 90, 92, false, wxEmptyString ) );
+	m_resultLabel->SetFont( wxFont( 200, 70, 90, 92, false, wxEmptyString ) );
 
-    gSizer1->Add( m_resultLabel, 0, wxALL, 5 );
+    fgSizer4->Add( m_resultLabel, 0, wxALL, 5 );
+
+	gSizer1->Add( fgSizer4, 1, wxEXPAND, 5 );
+
 
 	m_panel2 = new Board( this );
 	gSizer1->Add( m_panel2, 1, wxEXPAND | wxALL, 5 );
@@ -136,14 +147,15 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
 void MainFrame::implementToolbar()
 {
     //m_toolBar3->AddTool( wxID_LearnToolbar, wxT("Learn"), wxBitmap( wxT("res/learn.png") ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString );
-    for(int i = 0; i < 10; i++)
-    {
-        m_toolBar3->DeleteTool(wxID_NumberStart + i);
-    }
+    m_toolBar3->ClearTools();
     for(int i = 0; i < 10; i++)
     {
         m_toolBar3->AddTool( wxID_NumberStart + numberOrderArray[i], wxString::Format(wxT("%d"),numberOrderArray[i]),wxString::Format(wxT("res/%d.png"),numberOrderArray[i]), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString );
     }
+    m_toolBar3->Realize();
+    m_toolBar3->AddSeparator();
+    m_toolBar3->AddTool( wxID_CleanToolbar, wxT("Clean"), wxBitmap( wxT("res/edit_clear.png") ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString );
+    m_toolBar3->Realize();
 }
 
 

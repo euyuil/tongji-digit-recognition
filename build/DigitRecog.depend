@@ -1593,7 +1593,7 @@
 	<wx/wx.h>
 	<wx/menu.h>
 
-1340294347 source:/home/song/digitrecog/src/MainFrame.cpp
+1340294392 source:/home/song/digitrecog/src/MainFrame.cpp
 	"Board.h"
 	"Recognize.h"
 	"MainFrame.h"

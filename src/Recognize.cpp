@@ -22,9 +22,11 @@ bool SaveLearning()
             if (vsnr[i][j].size() > 0)
             {
                 fprintf(fo, "%u %u\n", i, vsnr[i][j].size());
-                fprintf(fo, "%lf", vsnr[i][j][0]);
+                fprintf(fo, "%lf %u",
+                    vsnr[i][j][0].first, vsnr[i][j][0].second);
                 for (unsigned int k = 1; k < vsnr[i][j].size(); ++k)
-                    fprintf(fo, " %lf", vsnr[i][j][k]);
+                    fprintf(fo, "  %lf %u",
+                        vsnr[i][j][k].first, vsnr[i][j][0].second);
                 fputs("", fo);
             }
         }
@@ -47,9 +49,9 @@ bool LoadLearning()
             vsnr[p].push_back(VS_NORM_RESULT());
             for (unsigned int i = 0; i < n; ++i)
             {
-                double r;
-                fscanf(fi, "%lf", &r);
-                vsnr[p].back().push_back(r);
+                double r; unsigned int s;
+                fscanf(fi, "%lf %u", &r, &s);
+                vsnr[p].back().push_back(make_pair(r, s));
             }
         }
     }
@@ -73,6 +75,8 @@ bool LearnPattern(char r, const char *c, unsigned int w, unsigned int h)
 
     vsnr[r - '0'].push_back(vnr);
 
+    fprintf(stderr, "Pattern for %c was learnt.\n", r);
+
     return true;
 }
 
@@ -88,6 +92,9 @@ char Recognize(const char *c, unsigned int w, unsigned int h)
         {
             VS_COMP_RESULT r = VertScanCompare(inr, vsnr[i][j]);
 
+            fprintf(stderr, "Pattern compared with %c, possibility of %lf\n",
+                i + '0', r);
+
             if (r > mxr)
             {
                 mxr = r;
@@ -95,6 +102,8 @@ char Recognize(const char *c, unsigned int w, unsigned int h)
             }
         }
     }
+
+    fprintf(stderr, "Pattern recognized, mxr = %lf, mxc = %c.\n", mxr, mxc);
 
     return mxc;
 }

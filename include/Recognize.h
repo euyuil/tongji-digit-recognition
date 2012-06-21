@@ -35,4 +35,24 @@ bool LearnPattern(char r, const char *c, unsigned int w, unsigned int h);
 char Recognize(const char *c, unsigned int w, unsigned int h);
 
 
+/**
+ * Save learning data into default destination.
+ * @return True if succeeded. False otherwise.
+ * @author EUYUIL
+ * @date 2012-06-21
+ */
+
+bool SaveLearning();
+
+
+/**
+ * Load learning data from default destination.
+ * @return True if succeeded. False otherwise.
+ * @author EUYUIL
+ * @date 2012-06-21
+ */
+
+bool LoadLearning();
+
+
 #endif /* _RECOGNIZE_H_ */

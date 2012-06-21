@@ -66,8 +66,8 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
 
 	m_statusBar1 = this->CreateStatusBar( 1, wxST_SIZEGRIP, wxID_ANY );
 	m_toolBar3 = this->CreateToolBar( wxTB_HORIZONTAL, wxID_ANY );
-	m_toolBar3->AddTool( wxID_CleanToolbar, wxT("Clean"), wxBitmap( wxT("edit_clear.png") ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString );
-	m_toolBar3->AddTool( wxID_LearnToolbar, wxT("Learn"), wxBitmap( wxT("learn.png") ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString );
+	m_toolBar3->AddTool( wxID_CleanToolbar, wxT("Clean"), wxBitmap( wxT("res/edit_clear.png") ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString );
+	m_toolBar3->AddTool( wxID_LearnToolbar, wxT("Learn"), wxBitmap( wxT("res/learn.png") ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString );
 
 	m_toolBar3->Realize();
 
@@ -99,6 +99,12 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
     updateTimer->board = m_panel2;
     updateTimer->label = m_resultLabel;
     updateTimer->Start(100);
+
+    if(!LoadLearning())
+    {
+        printf("fuck! load error\n");
+    }
+
 }
 
 MainFrame::~MainFrame()
@@ -125,6 +131,11 @@ void MainFrame::Learn( wxCommandEvent& event )
     if(m_panel2->Learn(number + '0'))
     {
         m_panel2->SetLabel(wxString::Format(wxT("Now I know it is %c"),number + '0'));
+
+        if(!SaveLearning())
+        {
+            printf("fuck! save error\n");
+        }
     }
     else
     {

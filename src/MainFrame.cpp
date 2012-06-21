@@ -64,11 +64,11 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
 
 	this->SetMenuBar( m_menubar1 );
 
-
-
 	m_statusBar1 = this->CreateStatusBar( 1, wxST_SIZEGRIP, wxID_ANY );
 	m_toolBar3 = this->CreateToolBar( wxTB_HORIZONTAL, wxID_ANY );
 	m_toolBar3->AddTool( wxID_CleanToolbar, wxT("Clean"), wxBitmap( wxT("edit_clear.png") ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString );
+	m_toolBar3->AddTool( wxID_LearnToolbar, wxT("Learn"), wxBitmap( wxT("learn.png") ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString );
+
 	m_toolBar3->Realize();
 
 	wxBoxSizer* bSizer3;
@@ -92,6 +92,8 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
 	this->Connect( m_menuItem_help->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MainFrame::Help ) );
 	this->Connect( m_menuItem_about->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MainFrame::About ) );
     this->Connect( wxID_CleanToolbar, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MainFrame::Clean ));
+    this->Connect( wxID_LearnToolbar, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MainFrame::Learn ));
+
 
     updateTimer = new UpdateDisplayClass();
     updateTimer->board = m_panel2;
@@ -120,8 +122,14 @@ void MainFrame::Learn( wxCommandEvent& event )
     int number =  wxGetNumberFromUser( wxT("Which digit are you drawing?"), wxT("Input a digit"), wxT("Number?"), 0, 0, 9, this, wxDefaultPosition);
     printf("learn %d\n",number);
 
-    m_panel2->Learn(number + '0');
-
+    if(m_panel2->Learn(number + '0'))
+    {
+        m_panel2->SetLabel(wxString::Format(wxT("Now I know it is %c"),number + '0'));
+    }
+    else
+    {
+        m_panel2->SetLabel(wxString::Format(wxT("It is too complex for me...><")));
+    }
 }
 void MainFrame::Help( wxCommandEvent& event )
 {

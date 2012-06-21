@@ -1549,12 +1549,12 @@
 	<wx/numdlg.h>
 	<wx/timer.h>
 
-1340262702 source:/home/song/digitrecog/src/Board.cpp
+1340267285 source:/home/song/digitrecog/src/Board.cpp
 	<cstdio>
 	"Board.h"
 	"Recognize.h"
 
-1340262533 /home/song/digitrecog/include/Board.h
+1340267151 /home/song/digitrecog/include/Board.h
 	<wx/wx.h>
 
 1340106622 source:/home/song/digitrecog/src/DigitRecog.cpp
@@ -1563,7 +1563,7 @@
 	"DigitRecog.h"
 	"MainFrame.h"
 
-1340264715 /home/song/digitrecog/include/MainFrame.h
+1340268130 /home/song/digitrecog/include/MainFrame.h
 	<wx/statusbr.h>
 	<wx/gdicmn.h>
 	<wx/font.h>
@@ -1593,7 +1593,7 @@
 	<wx/wx.h>
 	<wx/menu.h>
 
-1340264715 source:/home/song/digitrecog/src/MainFrame.cpp
+1340268401 source:/home/song/digitrecog/src/MainFrame.cpp
 	"Board.h"
 	"Recognize.h"
 	"MainFrame.h"
@@ -1617,7 +1617,10 @@
 	<vector>
 	<utility>
 
-1340260771 source:/home/song/digitrecog/src/Recognize.cpp
+1340267338 source:/home/song/digitrecog/src/Recognize.cpp
+	<cstdio>
+	<vector>
+	<VertScan.h>
 	<Recognize.h>
 
 1340260771 /home/song/digitrecog/include/Recognize.h

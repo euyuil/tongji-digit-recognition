@@ -44,7 +44,7 @@ private:
     bool needDisplay;
     char recognizedChar;
     int startPaintingX,startPaintingY;
-    char data[w_cells][h_cells];
+    char data[h_cells][w_cells];
 };
 
 #endif

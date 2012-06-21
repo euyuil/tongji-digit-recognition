@@ -60,9 +60,9 @@ char Board::getRecognizedChar()
 
 void Board::cleanCanvas()
 {
-    for( int i = 0; i < w_cells ; i++ )
+    for( int i = 0; i < h_cells ; i++ )
     {
-        for( int j = 0; j < h_cells ; j++ )
+        for( int j = 0; j < w_cells ; j++ )
         {
             data[i][j] = ' ';
         }
@@ -84,10 +84,9 @@ void Board::OnMouseMoveEvent(wxMouseEvent& event)
     {
         int x,y;
         convertPosition(event.GetX(),event.GetY(),x,y);
-        data[x][y] = '*';
+        data[y][x] = '*';
         IncrementDrawing(x, y);
     }
-
 }
 
 void Board::OnMouseLeftUpEvent(wxMouseEvent& event)
@@ -133,7 +132,7 @@ void Board::draw_line(int x0, int y0, int x1, int y1)
 	{
 		//Drawpixel(int (x+0.5),int (y+0.5),color);
 		dc.DrawRectangle( w * int (x+0.5), h * int (y+0.5), w, h );
-        data[int (x+0.5)][int (y+0.5)] = '*';
+        data[int (y+0.5)][int (x+0.5)] = '*';
 		x+=xinc;	y+=yinc;
 	}
 
@@ -165,13 +164,13 @@ void Board::CompleteDrawing()
     float w = width / w_cells;
     float h = height / h_cells;
 
-    for( int i = 0; i < w_cells ; i++ )
+    for( int i = 0; i < h_cells ; i++ )
     {
-        for( int j = 0; j < h_cells ; j++ )
+        for( int j = 0; j < w_cells ; j++ )
         {
             if(data[i][j] != ' ')
             {
-                dc.DrawRectangle( w * i, h * j, w, h );
+                dc.DrawRectangle( w * j, h * i, w, h );
             }
         }
     }

@@ -48,6 +48,7 @@
 		<Unit filename="../include/DigitRecog.h" />
 		<Unit filename="../include/GUIFrame.h" />
 		<Unit filename="../include/MainFrame.h" />
+		<Unit filename="../include/Recognize.h" />
 		<Unit filename="../include/VertScan.h" />
 		<Unit filename="../src/Board.cpp" />
 		<Unit filename="../src/DerivedMainFrame.cpp">
@@ -56,6 +57,7 @@
 		<Unit filename="../src/DigitRecog.cpp" />
 		<Unit filename="../src/GUIFrame.cpp" />
 		<Unit filename="../src/MainFrame.cpp" />
+		<Unit filename="../src/Recognize.cpp" />
 		<Unit filename="../src/VertScan.cpp" />
 		<Extensions>
 			<code_completion />

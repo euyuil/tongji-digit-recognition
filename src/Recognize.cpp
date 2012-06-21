@@ -5,8 +5,9 @@ using namespace std;
 
 #include <VertScan.h>
 #include <Recognize.h>
+#include <RecogUtils.h>
 
-static const char LEARNING_FILE_PATH[] = "learning";
+static const char LEARNING_FILE_PATH[] = "res/learning.txt";
 
 static vector<VS_NORM_RESULT> vsnr[10];
 
@@ -26,8 +27,8 @@ bool SaveLearning()
                     vsnr[i][j][0].first, vsnr[i][j][0].second);
                 for (unsigned int k = 1; k < vsnr[i][j].size(); ++k)
                     fprintf(fo, "  %lf %u",
-                        vsnr[i][j][k].first, vsnr[i][j][0].second);
-                fputs("", fo);
+                        vsnr[i][j][k].first, vsnr[i][j][k].second);
+                fputs("\n", fo);
             }
         }
     }
@@ -42,7 +43,7 @@ bool LoadLearning()
     if (!fi) return false;
 
     unsigned int p, n;
-    while (fscanf(fi, "%u %u", &p, &n))
+    while (fscanf(fi, "%u %u", &p, &n) != EOF)
     {
         if (n > 0)
         {
@@ -83,24 +84,26 @@ bool LearnPattern(char r, const char *c, unsigned int w, unsigned int h)
 char Recognize(const char *c, unsigned int w, unsigned int h)
 {
     VS_NORM_RESULT inr = VertScanNormalize(VertScan(c, w, h));
-    VS_COMP_RESULT mxr = 0.0;
-    char mxc = '\0';
+    VS_COMP_RESULT mxr = 0.0; char mxc = '\0';
 
     for (unsigned int i = 0; i < 10; ++i)
     {
+        fprintf(stderr, "%u:", i);
+
         for (unsigned int j = 0; j < vsnr[i].size(); ++j)
         {
             VS_COMP_RESULT r = VertScanCompare(inr, vsnr[i][j]);
-
-            fprintf(stderr, "Pattern compared with %c, possibility of %lf\n",
-                i + '0', r);
 
             if (r > mxr)
             {
                 mxr = r;
                 mxc = i + '0';
             }
+
+            fprintf(stderr, " %lf", r);
         }
+
+        fprintf(stderr, "\n");
     }
 
     fprintf(stderr, "Pattern recognized, mxr = %lf, mxc = %c.\n", mxr, mxc);

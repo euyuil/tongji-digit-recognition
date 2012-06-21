@@ -1,6 +1,7 @@
 #include <cstdio>
 using namespace std;
 #include "Board.h"
+#include "Recognize.h"
 
 Board::Board(wxFrame *parent)
        : wxPanel(parent, wxID_ANY, wxDefaultPosition,
@@ -17,7 +18,45 @@ Board::Board(wxFrame *parent)
     cleanCanvas();
 
     mouseDown = false;
+    needDisplay = false;
 }
+
+bool Board::Learn(char c)
+{
+    bool result = false;
+    if(LearnPattern(c, getData() , w_cells, h_cells))
+    {
+        printf("Learned OK");
+        result = true;
+    }
+    else
+    {
+        printf("Learned Failed");
+    }
+    return result;
+}
+
+const char *Board::getData()
+{
+    return (char *) data;
+}
+
+bool Board::isNeedDisplay()
+{
+    if(needDisplay)
+    {
+        needDisplay = false;
+        return true;
+    }
+    return false;
+}
+
+char Board::getRecognizedChar()
+{
+    return recognizedChar;
+}
+
+
 
 void Board::cleanCanvas()
 {
@@ -54,6 +93,8 @@ void Board::OnMouseMoveEvent(wxMouseEvent& event)
 void Board::OnMouseLeftUpEvent(wxMouseEvent& event)
 {
     mouseDown = false;
+    needDisplay = true;
+    recognizedChar = Recognize(getData(),w_cells,h_cells);
 }
 
 void Board::OnMouseLeftDownEvent(wxMouseEvent& event)

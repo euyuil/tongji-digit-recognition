@@ -6,11 +6,31 @@
 ///////////////////////////////////////////////////////////////////////////
 
 #include "Board.h"
-
+#include "Recognize.h"
 #include "MainFrame.h"
 #include <wx/aboutdlg.h>
 #include <wx/numdlg.h>
+#include <wx/timer.h>
 ///////////////////////////////////////////////////////////////////////////
+
+
+class UpdateDisplayClass : public wxTimer
+{
+    public:
+        wxStaticText* label;
+		Board* board;
+        void Notify()
+        {
+            if(board->isNeedDisplay())
+            {
+                //static int i = -1;
+                //i++;
+                //label->SetLabel(wxString::Format(wxT("I guess it is %c"),i + '0'));
+                label->SetLabel(wxString::Format(wxT("I guess it is %c"),board->getRecognizedChar()));
+            }
+        }
+};
+
 
 MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
 {
@@ -73,6 +93,10 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
 	this->Connect( m_menuItem_about->GetId(), wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MainFrame::About ) );
     this->Connect( wxID_CleanToolbar, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MainFrame::Clean ));
 
+    updateTimer = new UpdateDisplayClass();
+    updateTimer->board = m_panel2;
+    updateTimer->label = m_resultLabel;
+    updateTimer->Start(100);
 }
 
 MainFrame::~MainFrame()
@@ -82,6 +106,8 @@ MainFrame::~MainFrame()
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MainFrame::Learn ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MainFrame::Help ) );
 	this->Disconnect( wxID_ANY, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler( MainFrame::About ) );
+
+    delete updateTimer;
 }
 
 void MainFrame::Clean( wxCommandEvent& event )
@@ -93,6 +119,9 @@ void MainFrame::Learn( wxCommandEvent& event )
 {
     int number =  wxGetNumberFromUser( wxT("Which digit are you drawing?"), wxT("Input a digit"), wxT("Number?"), 0, 0, 9, this, wxDefaultPosition);
     printf("learn %d\n",number);
+
+    m_panel2->Learn(number + '0');
+
 }
 void MainFrame::Help( wxCommandEvent& event )
 {
@@ -102,6 +131,8 @@ void MainFrame::Help( wxCommandEvent& event )
     info.SetDescription(_("Draw a number and enjoy~~^o^"));
     wxAboutBox(info);
 }
+
+
 void MainFrame::About( wxCommandEvent& event )
 {
     printf("about\n");

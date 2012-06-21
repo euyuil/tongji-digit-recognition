@@ -20,3 +20,5 @@
 /build/obj
 
 .DS_Store
+
+build/DigitRecog.layout

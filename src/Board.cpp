@@ -92,7 +92,7 @@ void Board::draw_line(int x0, int y0, int x1, int y1)
 	{
 		//Drawpixel(int (x+0.5),int (y+0.5),color);
 		dc.DrawRectangle( w * int (x+0.5), h * int (y+0.5), w, h );
-
+        data[int (x+0.5)][int (y+0.5)] = '*';
 		x+=xinc;	y+=yinc;
 	}
 

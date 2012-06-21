@@ -29,6 +29,8 @@ class Board;
 ///////////////////////////////////////////////////////////////////////////
 #define wxID_CleanToolbar 1000
 
+
+class UpdateDisplayClass;
 ///////////////////////////////////////////////////////////////////////////////
 /// Class MainFrame
 ///////////////////////////////////////////////////////////////////////////////
@@ -45,13 +47,13 @@ class MainFrame : public wxFrame
 		wxMenu* Menu_Edit;
 		wxMenu* Menu_Learn;
 		wxMenu* Menu_Help;
+        UpdateDisplayClass *updateTimer;
 
-        // Virtual event handlers, overide them in your derived class
+        // Virtual event handlers
 		virtual void Clean( wxCommandEvent& event );
 		virtual void Learn( wxCommandEvent& event );
 		virtual void Help( wxCommandEvent& event ) ;
 		virtual void About( wxCommandEvent& event );
-
 
 	public:
 

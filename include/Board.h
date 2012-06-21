@@ -17,6 +17,14 @@ public:
 
     void cleanCanvas();
 
+    const char *getData();
+
+    bool Learn(char c);
+
+    bool isNeedDisplay();
+
+    char getRecognizedChar();
+
 protected:
     void OnPaint(wxPaintEvent& event);
 
@@ -33,6 +41,8 @@ private:
     void draw_line(int x1, int y1, int x2, int y2);
     wxStatusBar *m_stsbar;
     bool mouseDown;
+    bool needDisplay;
+    char recognizedChar;
     int startPaintingX,startPaintingY;
     char data[w_cells][h_cells];
 };

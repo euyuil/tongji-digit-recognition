@@ -1,6 +1,7 @@
 #include <cstdio>
 using namespace std;
 #include "Board.h"
+#include "Recognize.h"
 
 Board::Board(wxFrame *parent)
        : wxPanel(parent, wxID_ANY, wxDefaultPosition,
@@ -17,7 +18,45 @@ Board::Board(wxFrame *parent)
     cleanCanvas();
 
     mouseDown = false;
+    needDisplay = false;
 }
+
+bool Board::Learn(char c)
+{
+    bool result = false;
+    if(LearnPattern(c, getData() , w_cells, h_cells))
+    {
+        printf("Learned OK");
+        result = true;
+    }
+    else
+    {
+        printf("Learned Failed");
+    }
+    return result;
+}
+
+const char *Board::getData()
+{
+    return (char *) data;
+}
+
+bool Board::isNeedDisplay()
+{
+    if(needDisplay)
+    {
+        needDisplay = false;
+        return true;
+    }
+    return false;
+}
+
+char Board::getRecognizedChar()
+{
+    return recognizedChar;
+}
+
+
 
 void Board::cleanCanvas()
 {
@@ -54,6 +93,8 @@ void Board::OnMouseMoveEvent(wxMouseEvent& event)
 void Board::OnMouseLeftUpEvent(wxMouseEvent& event)
 {
     mouseDown = false;
+    needDisplay = true;
+    recognizedChar = Recognize(getData(),w_cells,h_cells);
 }
 
 void Board::OnMouseLeftDownEvent(wxMouseEvent& event)
@@ -92,7 +133,7 @@ void Board::draw_line(int x0, int y0, int x1, int y1)
 	{
 		//Drawpixel(int (x+0.5),int (y+0.5),color);
 		dc.DrawRectangle( w * int (x+0.5), h * int (y+0.5), w, h );
-
+        data[int (x+0.5)][int (y+0.5)] = '*';
 		x+=xinc;	y+=yinc;
 	}
 

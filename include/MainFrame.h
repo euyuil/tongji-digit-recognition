@@ -30,6 +30,20 @@ class Board;
 #define wxID_CleanToolbar 1000
 #define wxID_LearnToolbar 1001
 
+#define wxID_NumberStart 1010
+#define wxID_Number0 1010
+#define wxID_Number1 1011
+#define wxID_Number2 1012
+#define wxID_Number3 1013
+#define wxID_Number4 1014
+#define wxID_Number5 1015
+#define wxID_Number6 1016
+#define wxID_Number7 1017
+#define wxID_Number8 1018
+#define wxID_Number9 1019
+
+
+
 class UpdateDisplayClass;
 ///////////////////////////////////////////////////////////////////////////////
 /// Class MainFrame
@@ -55,9 +69,26 @@ class MainFrame : public wxFrame
 		virtual void Help( wxCommandEvent& event ) ;
 		virtual void About( wxCommandEvent& event );
 
-	public:
+        virtual void Learn1( wxCommandEvent& event );
+        virtual void Learn2( wxCommandEvent& event );
+        virtual void Learn3( wxCommandEvent& event );
+        virtual void Learn4( wxCommandEvent& event );
+        virtual void Learn5( wxCommandEvent& event );
+        virtual void Learn6( wxCommandEvent& event );
+        virtual void Learn7( wxCommandEvent& event );
+        virtual void Learn8( wxCommandEvent& event );
+        virtual void Learn9( wxCommandEvent& event );
+        virtual void Learn0( wxCommandEvent& event );
 
-		MainFrame( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Digit Recognization"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 300,400 ), long style = wxCAPTION|wxCLOSE_BOX|wxMINIMIZE_BOX|wxTAB_TRAVERSAL );
+        virtual void LearnNumber( int number );
+
+        int numberOrderArray[10];
+
+
+
+	public:
+        void implementToolbar();
+		MainFrame( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Digit Recognization"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 600,400 ), long style = wxCAPTION|wxCLOSE_BOX|wxMINIMIZE_BOX|wxTAB_TRAVERSAL );
 		~MainFrame();
 
 };

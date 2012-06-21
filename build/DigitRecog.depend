@@ -1563,7 +1563,7 @@
 	"DigitRecog.h"
 	"MainFrame.h"
 
-1340268130 /home/song/digitrecog/include/MainFrame.h
+1340291251 /home/song/digitrecog/include/MainFrame.h
 	<wx/statusbr.h>
 	<wx/gdicmn.h>
 	<wx/font.h>
@@ -1593,7 +1593,7 @@
 	<wx/wx.h>
 	<wx/menu.h>
 
-1340269005 source:/home/song/digitrecog/src/MainFrame.cpp
+1340290446 source:/home/song/digitrecog/src/MainFrame.cpp
 	"Board.h"
 	"Recognize.h"
 	"MainFrame.h"
@@ -1637,4 +1637,12 @@
 	<utility>
 
 1340260584 /home/yue/digitrecog/include/Recognize.h
+
+1329067903 /usr/include/wx-2.8/wx/splitter.h
+	"wx/event.h"
+	"wx/generic/splitter.h"
+
+1329067903 /usr/include/wx-2.8/wx/generic/splitter.h
+	"wx/window.h"
+	"wx/containr.h"
 

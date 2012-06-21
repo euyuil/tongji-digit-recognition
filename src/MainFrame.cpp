@@ -19,14 +19,13 @@ class UpdateDisplayClass : public wxTimer
     public:
         wxStaticText* label;
 		Board* board;
+		MainFrame *mainFrame;
         void Notify()
         {
             if(board->isNeedDisplay())
             {
-                //static int i = -1;
-                //i++;
-                //label->SetLabel(wxString::Format(wxT("I guess it is %c"),i + '0'));
-                label->SetLabel(wxString::Format(wxT("I guess it is %c"),board->getRecognizedChar()));
+                label->SetLabel(wxString::Format(wxT("%c"),board->getRecognizedChar()));
+                mainFrame->implementToolbar();
             }
         }
 };
@@ -67,21 +66,29 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_statusBar1 = this->CreateStatusBar( 1, wxST_SIZEGRIP, wxID_ANY );
 	m_toolBar3 = this->CreateToolBar( wxTB_HORIZONTAL, wxID_ANY );
 	m_toolBar3->AddTool( wxID_CleanToolbar, wxT("Clean"), wxBitmap( wxT("res/edit_clear.png") ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString );
-	m_toolBar3->AddTool( wxID_LearnToolbar, wxT("Learn"), wxBitmap( wxT("res/learn.png") ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString );
+    m_toolBar3->AddSeparator();
+	//m_toolBar3->AddTool( wxID_LearnToolbar, wxT("Learn"), wxBitmap( wxT("res/learn.png") ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString );
 
-	m_toolBar3->Realize();
+    m_toolBar3->Realize();
+
 
 	wxBoxSizer* bSizer3;
 	bSizer3 = new wxBoxSizer( wxVERTICAL );
 
-	m_resultLabel = new wxStaticText( this, wxID_ANY, wxT("Draw A Number"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_resultLabel->Wrap( -1 );
-	m_resultLabel->SetFont( wxFont( 20, 70, 90, 92, false, wxEmptyString ) );
+    wxGridSizer* gSizer1;
+	gSizer1 = new wxGridSizer( 2, 2, 0, 0 );
 
-	bSizer3->Add( m_resultLabel, 0, wxALL, 5 );
+
+	m_resultLabel = new wxStaticText( this, wxID_ANY, wxT("?"), wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT );
+	m_resultLabel->Wrap( -1 );
+	m_resultLabel->SetFont( wxFont( 230, 70, 90, 92, false, wxEmptyString ) );
+
+    gSizer1->Add( m_resultLabel, 0, wxALL, 5 );
 
 	m_panel2 = new Board( this );
-	bSizer3->Add( m_panel2, 1, wxEXPAND | wxALL, 5 );
+	gSizer1->Add( m_panel2, 1, wxEXPAND | wxALL, 5 );
+
+	bSizer3->Add( gSizer1, 1, wxEXPAND, 5 );
 
 	this->SetSizer( bSizer3 );
 	this->Layout();
@@ -98,6 +105,7 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
     updateTimer = new UpdateDisplayClass();
     updateTimer->board = m_panel2;
     updateTimer->label = m_resultLabel;
+    updateTimer->mainFrame = this;
     updateTimer->Start(100);
 
     if(!LoadLearning())
@@ -105,7 +113,39 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
         printf("fuck! load error\n");
     }
 
+    for(int i = 0; i < 10; i++)
+    {
+        numberOrderArray[i] = 9-i;
+    }
+    implementToolbar();
+
+    this->Connect( wxID_Number0, wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler( MainFrame::Learn0 ));
+    this->Connect( wxID_Number1, wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler( MainFrame::Learn1 ));
+    this->Connect( wxID_Number2, wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler( MainFrame::Learn2 ));
+    this->Connect( wxID_Number3, wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler( MainFrame::Learn3 ));
+    this->Connect( wxID_Number4, wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler( MainFrame::Learn4 ));
+    this->Connect( wxID_Number5, wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler( MainFrame::Learn5 ));
+    this->Connect( wxID_Number6, wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler( MainFrame::Learn6 ));
+    this->Connect( wxID_Number7, wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler( MainFrame::Learn7 ));
+    this->Connect( wxID_Number8, wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler( MainFrame::Learn8 ));
+    this->Connect( wxID_Number9, wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler( MainFrame::Learn9 ));
+
+
 }
+
+void MainFrame::implementToolbar()
+{
+    //m_toolBar3->AddTool( wxID_LearnToolbar, wxT("Learn"), wxBitmap( wxT("res/learn.png") ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString );
+    for(int i = 0; i < 10; i++)
+    {
+        m_toolBar3->DeleteTool(wxID_NumberStart + i);
+    }
+    for(int i = 0; i < 10; i++)
+    {
+        m_toolBar3->AddTool( wxID_NumberStart + numberOrderArray[i], wxString::Format(wxT("%d"),numberOrderArray[i]),wxString::Format(wxT("res/%d.png"),numberOrderArray[i]), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString );
+    }
+}
+
 
 MainFrame::~MainFrame()
 {
@@ -123,24 +163,61 @@ void MainFrame::Clean( wxCommandEvent& event )
     printf("clean\n");
     m_panel2->cleanCanvas();
 }
+
+void MainFrame::Learn1( wxCommandEvent& event )
+{
+    LearnNumber(1);
+}
+void MainFrame::Learn2( wxCommandEvent& event )
+{
+    LearnNumber(2);
+}
+void MainFrame::Learn3( wxCommandEvent& event )
+{
+    LearnNumber(3);
+}
+void MainFrame::Learn4( wxCommandEvent& event )
+{
+    LearnNumber(4);
+}
+void MainFrame::Learn5( wxCommandEvent& event )
+{
+    LearnNumber(5);
+}
+void MainFrame::Learn6( wxCommandEvent& event )
+{
+    LearnNumber(6);
+}
+void MainFrame::Learn7( wxCommandEvent& event )
+{
+    LearnNumber(7);
+}
+void MainFrame::Learn8( wxCommandEvent& event )
+{
+    LearnNumber(8);
+}
+void MainFrame::Learn9( wxCommandEvent& event )
+{
+    LearnNumber(9);
+}
+void MainFrame::Learn0( wxCommandEvent& event )
+{
+    LearnNumber(0);
+}
+
+void MainFrame::LearnNumber( int number )
+{
+    if(m_panel2->Learn(number + '0'))
+    {
+        m_panel2->cleanCanvas();
+        //m_panel2->SetLabel(wxString::Format(wxT("Now I know it is %c"),number + '0'));
+    }
+}
 void MainFrame::Learn( wxCommandEvent& event )
 {
     int number =  wxGetNumberFromUser( wxT("Which digit are you drawing?"), wxT("Input a digit"), wxT("Number?"), 0, 0, 9, this, wxDefaultPosition);
     printf("learn %d\n",number);
-
-    if(m_panel2->Learn(number + '0'))
-    {
-        m_panel2->SetLabel(wxString::Format(wxT("Now I know it is %c"),number + '0'));
-
-        if(!SaveLearning())
-        {
-            printf("fuck! save error\n");
-        }
-    }
-    else
-    {
-        m_panel2->SetLabel(wxString::Format(wxT("It is too complex for me...><")));
-    }
+    LearnNumber(number);
 }
 void MainFrame::Help( wxCommandEvent& event )
 {

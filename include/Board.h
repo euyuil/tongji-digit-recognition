@@ -3,11 +3,11 @@
 
 #include <wx/wx.h>
 
-#define width 600
-#define height 220
+#define width 300
+#define height 396
 
 #define w_cells 50
-#define h_cells 20
+#define h_cells 66
 
 class Board : public wxPanel
 {

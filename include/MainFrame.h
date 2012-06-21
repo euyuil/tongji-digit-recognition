@@ -55,7 +55,7 @@ class MainFrame : public wxFrame
 
 	public:
 
-		MainFrame( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Digit Recognization"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 600,300 ), long style = wxCAPTION|wxCLOSE_BOX|wxMINIMIZE_BOX|wxTAB_TRAVERSAL );
+		MainFrame( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Digit Recognization"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 300,400 ), long style = wxCAPTION|wxCLOSE_BOX|wxMINIMIZE_BOX|wxTAB_TRAVERSAL );
 		~MainFrame();
 
 };

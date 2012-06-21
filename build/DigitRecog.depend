@@ -1546,7 +1546,7 @@
 	<cstdio>
 	"Board.h"
 
-1340094386 /home/song/digitrecog/include/Board.h
+1340258170 /home/song/digitrecog/include/Board.h
 	<wx/wx.h>
 
 1340106622 source:/home/song/digitrecog/src/DigitRecog.cpp
@@ -1555,7 +1555,7 @@
 	"DigitRecog.h"
 	"MainFrame.h"
 
-1340108063 /home/song/digitrecog/include/MainFrame.h
+1340258277 /home/song/digitrecog/include/MainFrame.h
 	<wx/statusbr.h>
 	<wx/gdicmn.h>
 	<wx/font.h>
@@ -1598,4 +1598,12 @@
 	"wx/defs.h"
 	"wx/app.h"
 	"wx/icon.h"
+
+1340114075 source:/home/song/digitrecog/src/VertScan.cpp
+	<algorithm>
+	<VertScan.h>
+
+1340112229 /home/song/digitrecog/include/VertScan.h
+	<vector>
+	<utility>
 

@@ -4,12 +4,14 @@
 using namespace std;
 
 #include <VertScan.h>
+#include <HoriScan.h>
 #include <Recognize.h>
 #include <RecogUtils.h>
+#include <Characteristic.h>
 
 static const char LEARNING_FILE_PATH[] = "res/learning.txt";
 
-static vector<VS_NORM_RESULT> vsnr[10];
+static vector<CHARACTER> chs[10];
 
 bool SaveLearning()
 {
@@ -18,18 +20,10 @@ bool SaveLearning()
 
     for (unsigned int i = 0; i < 10; ++i)
     {
-        for (unsigned int j = 0; j < vsnr[i].size(); ++j)
+        for (unsigned int j = 0; j < chs[i].size(); ++j)
         {
-            if (vsnr[i][j].size() > 0)
-            {
-                fprintf(fo, "%u %u\n", i, vsnr[i][j].size());
-                fprintf(fo, "%lf %u",
-                    vsnr[i][j][0].first, vsnr[i][j][0].second);
-                for (unsigned int k = 1; k < vsnr[i][j].size(); ++k)
-                    fprintf(fo, "  %lf %u",
-                        vsnr[i][j][k].first, vsnr[i][j][k].second);
-                fputs("\n", fo);
-            }
+            fprintf(fo, "%u\n", i);
+            foutch(fo, chs[i][j]);
         }
     }
 
@@ -42,19 +36,11 @@ bool LoadLearning()
     FILE *fi = fopen(LEARNING_FILE_PATH, "r");
     if (!fi) return false;
 
-    unsigned int p, n;
-    while (fscanf(fi, "%u %u", &p, &n) != EOF)
+    unsigned int p;
+    while (fscanf(fi, "%u", &p) != EOF)
     {
-        if (n > 0)
-        {
-            vsnr[p].push_back(VS_NORM_RESULT());
-            for (unsigned int i = 0; i < n; ++i)
-            {
-                double r; unsigned int s;
-                fscanf(fi, "%lf %u", &r, &s);
-                vsnr[p].back().push_back(make_pair(r, s));
-            }
-        }
+        chs[p].push_back(CHARACTER());
+        finch(fi, chs[p].back());
     }
 
     fclose(fi);
@@ -66,15 +52,11 @@ bool LearnPattern(char r, const char *c, unsigned int w, unsigned int h)
     if (r < '0' || r > '9')
         return false;
 
-    VS_RESULT vsr = VertScan(c, w, h);
-    if (vsr.size() == 0)
-        return false;
+    unsigned int idx = r - '0';
 
-    VS_NORM_RESULT vnr = VertScanNormalize(vsr);
-    if (vnr.size() == 0)
-        return false;
-
-    vsnr[r - '0'].push_back(vnr);
+    chs[idx].push_back(CHARACTER());
+    chs[idx].back().vs = VertScanNormalize(VertScan(c, w, h));
+    chs[idx].back().hs = HoriScanNormalize(HoriScan(c, w, h));
 
     fprintf(stderr, "Pattern for %c was learnt.\n", r);
 
@@ -83,16 +65,21 @@ bool LearnPattern(char r, const char *c, unsigned int w, unsigned int h)
 
 char Recognize(const char *c, unsigned int w, unsigned int h)
 {
-    VS_NORM_RESULT inr = VertScanNormalize(VertScan(c, w, h));
-    VS_COMP_RESULT mxr = 0.0; char mxc = '\0';
+    VS_NORM_RESULT vsr = VertScanNormalize(VertScan(c, w, h));
+    HS_NORM_RESULT hsr = HoriScanNormalize(HoriScan(c, w, h));
+
+    double mxr = 0.0; char mxc = '\0';
 
     for (unsigned int i = 0; i < 10; ++i)
     {
         fprintf(stderr, "%u:", i);
 
-        for (unsigned int j = 0; j < vsnr[i].size(); ++j)
+        for (unsigned int j = 0; j < chs[i].size(); ++j)
         {
-            VS_COMP_RESULT r = VertScanCompare(inr, vsnr[i][j]);
+            VS_COMP_RESULT v = VertScanCompare(vsr, chs[i][j].vs);
+            HS_COMP_RESULT h = HoriScanCompare(hsr, chs[i][j].hs);
+
+            double r = v * h;
 
             if (r > mxr)
             {

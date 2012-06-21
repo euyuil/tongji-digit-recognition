@@ -1628,7 +1628,7 @@
 1340259797 /home/yue/digitrecog/include/DerivedMainFrame.h
 	"MainFrame.h"
 
-1340280107 source:/home/yue/digitrecog/src/VertScan.cpp
+1340281209 source:/home/yue/digitrecog/src/VertScan.cpp
 	<cstdio>
 	<algorithm>
 	<VertScan.h>
@@ -1653,4 +1653,24 @@
 	<RecogUtils.h>
 
 1340274187 /home/yue/digitrecog/include/RecogUtils.h
+
+1340282282 source:/home/yue/digitrecog/src/HoriScan.cpp
+	<cstdio>
+	<algorithm>
+	<HoriScan.h>
+	<RecogUtils.h>
+
+1340282113 /home/yue/digitrecog/include/HoriScan.h
+	<vector>
+	<utility>
+
+1340284041 source:/home/yue/digitrecog/src/Characteristic.cpp
+	<cstdio>
+	<utility>
+	<Characteristic.h>
+
+1340284021 /home/yue/digitrecog/include/Characteristic.h
+	<cstdio>
+	<VertScan.h>
+	<HoriScan.h>
 

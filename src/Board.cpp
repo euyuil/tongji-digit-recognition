@@ -120,6 +120,14 @@ void Board::draw_line(int x0, int y0, int x1, int y1)
     float h = height / h_cells;
 
 
+    if(x0 == x1 && y0 == y1)
+    {
+        data[y0][x0] = '*';
+        dc.DrawRectangle( w * x0, h * y0, w, h );
+        return;
+    }
+
+
 	int dx,dy,n,k;float xinc,yinc,x,y;
 	dx=x1-x0;dy=y1-y0;
 	if (abs(dx)>abs(dy))

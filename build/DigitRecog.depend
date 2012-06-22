@@ -1500,7 +1500,7 @@
 	"DigitRecog.h"
 	"MainFrame.h"
 
-1340336977 /home/yue/digitrecog/include/MainFrame.h
+1340343407 /home/yue/digitrecog/include/MainFrame.h
 	<wx/statusbr.h>
 	<wx/gdicmn.h>
 	<wx/font.h>
@@ -1544,7 +1544,7 @@
 	<wx/wx.h>
 	<wx/menu.h>
 
-1340336977 source:/home/yue/digitrecog/src/MainFrame.cpp
+1340343407 source:/home/yue/digitrecog/src/MainFrame.cpp
 	"Board.h"
 	"Recognize.h"
 	"MainFrame.h"
@@ -1657,7 +1657,7 @@
 	<vector>
 	<utility>
 
-1340335258 source:/home/yue/digitrecog/src/Recognize.cpp
+1340384977 source:/home/yue/digitrecog/src/Recognize.cpp
 	<cstdio>
 	<vector>
 	<algorithm>

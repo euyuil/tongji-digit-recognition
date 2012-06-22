@@ -248,6 +248,10 @@ void MainFrame::LearnNumber( int number )
 {
     if(m_panel2->Learn(number + '0'))
     {
+        if(!SaveLearning())
+        {
+            printf("fuck! save error\n");
+        }
         doClean();
         m_resultLabel->SetLabel(wxString::Format(wxT("%c"),number + '0'));
         //m_panel2->SetLabel(wxString::Format(wxT("Now I know it is %c"),number + '0'));

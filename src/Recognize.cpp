@@ -29,6 +29,8 @@ bool SaveLearning()
         }
     }
 
+    fprintf(stderr, "Learning material saved.\n");
+
     fclose(fo);
     return true;
 }
@@ -44,6 +46,8 @@ bool LoadLearning()
         chs[p].push_back(CHARACTER());
         finch(fi, chs[p].back());
     }
+
+    fprintf(stderr, "Learning material loaded.\n");
 
     fclose(fi);
     return true;

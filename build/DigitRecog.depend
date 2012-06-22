@@ -1484,7 +1484,7 @@
 	"Board.h"
 	"noname.h"
 
-1340268526 source:/home/yue/digitrecog/src/Board.cpp
+1340332037 source:/home/yue/digitrecog/src/Board.cpp
 	<cstdio>
 	"Board.h"
 	"Recognize.h"
@@ -1498,7 +1498,7 @@
 	"DigitRecog.h"
 	"MainFrame.h"
 
-1340268526 /home/yue/digitrecog/include/MainFrame.h
+1340332037 /home/yue/digitrecog/include/MainFrame.h
 	<wx/statusbr.h>
 	<wx/gdicmn.h>
 	<wx/font.h>
@@ -1541,7 +1541,7 @@
 	<wx/wx.h>
 	<wx/menu.h>
 
-1340269095 source:/home/yue/digitrecog/src/MainFrame.cpp
+1340332037 source:/home/yue/digitrecog/src/MainFrame.cpp
 	"Board.h"
 	"Recognize.h"
 	"MainFrame.h"
@@ -1645,7 +1645,7 @@
 
 1340268451 /home/yue/digitrecog/include/Recognize.h
 
-1340330179 source:/home/yue/digitrecog/src/Recognize.cpp
+1340332372 source:/home/yue/digitrecog/src/Recognize.cpp
 	<cstdio>
 	<vector>
 	<VertScan.h>
@@ -1655,12 +1655,12 @@
 	<RecogUtils.h>
 	<Characteristic.h>
 
-1340275610 source:/home/yue/digitrecog/src/RecogUtils.cpp
+1340332432 source:/home/yue/digitrecog/src/RecogUtils.cpp
 	<climits>
 	<algorithm>
 	<RecogUtils.h>
 
-1340274187 /home/yue/digitrecog/include/RecogUtils.h
+1340332210 /home/yue/digitrecog/include/RecogUtils.h
 
 1340282282 source:/home/yue/digitrecog/src/HoriScan.cpp
 	<cstdio>

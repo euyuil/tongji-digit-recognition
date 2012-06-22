@@ -53,6 +53,9 @@ bool LearnPattern(char r, const char *c, unsigned int w, unsigned int h)
     if (r < '0' || r > '9')
         return false;
 
+    if (!MatrixHasContent(c, w, h))
+        return false;
+
     unsigned int idx = r - '0';
 
     chs[idx].push_back(CHARACTER());
@@ -66,6 +69,9 @@ bool LearnPattern(char r, const char *c, unsigned int w, unsigned int h)
 
 char Recognize(const char *c, unsigned int w, unsigned int h)
 {
+    if (!MatrixHasContent(c, w, h))
+        return false;
+
     VS_NORM_RESULT vsr = VertScanNormalize(VertScan(c, w, h));
     HS_NORM_RESULT hsr = HoriScanNormalize(HoriScan(c, w, h));
     NG_RESULT ngr; NineGridScan(c, w, h, ngr);

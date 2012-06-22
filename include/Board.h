@@ -9,6 +9,10 @@
 #define w_cells 50
 #define h_cells 66
 
+#include "Recognize.h"
+#include <vector>
+
+
 class Board : public wxPanel
 {
 
@@ -25,6 +29,8 @@ public:
 
     char getRecognizedChar();
 
+    std::vector<std::pair<char, double> >  *possibleOrder;
+
 protected:
     void OnPaint(wxPaintEvent& event);
 
@@ -36,6 +42,7 @@ protected:
 
     void CompleteDrawing();
     void IncrementDrawing(int x, int y);
+
 
 private:
     void draw_line(int x1, int y1, int x2, int y2);

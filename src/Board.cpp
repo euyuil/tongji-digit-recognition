@@ -93,7 +93,10 @@ void Board::OnMouseLeftUpEvent(wxMouseEvent& event)
 {
     mouseDown = false;
     needDisplay = true;
-    recognizedChar = Recognize(getData(),w_cells,h_cells);
+
+    *possibleOrder =  RecognizePossibility(getData(),w_cells,h_cells);
+
+    recognizedChar = (*possibleOrder)[0].first;
 }
 
 void Board::OnMouseLeftDownEvent(wxMouseEvent& event)

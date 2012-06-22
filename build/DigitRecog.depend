@@ -1549,13 +1549,15 @@
 	<wx/numdlg.h>
 	<wx/timer.h>
 
-1340267285 source:/home/song/digitrecog/src/Board.cpp
+1340336459 source:/home/song/digitrecog/src/Board.cpp
 	<cstdio>
 	"Board.h"
 	"Recognize.h"
 
-1340267151 /home/song/digitrecog/include/Board.h
+1340336399 /home/song/digitrecog/include/Board.h
 	<wx/wx.h>
+	"Recognize.h"
+	<vector>
 
 1340106622 source:/home/song/digitrecog/src/DigitRecog.cpp
 	"wx_pch.h"
@@ -1563,7 +1565,7 @@
 	"DigitRecog.h"
 	"MainFrame.h"
 
-1340294373 /home/song/digitrecog/include/MainFrame.h
+1340335749 /home/song/digitrecog/include/MainFrame.h
 	<wx/statusbr.h>
 	<wx/gdicmn.h>
 	<wx/font.h>
@@ -1579,6 +1581,7 @@
 	<wx/sizer.h>
 	<wx/menu.h>
 	<wx/frame.h>
+	<vector>
 
 1338723521 /home/song/digitrecog/include/DigitRecog.h
 	<wx/app.h>
@@ -1593,7 +1596,7 @@
 	<wx/wx.h>
 	<wx/menu.h>
 
-1340294392 source:/home/song/digitrecog/src/MainFrame.cpp
+1340336623 source:/home/song/digitrecog/src/MainFrame.cpp
 	"Board.h"
 	"Recognize.h"
 	"MainFrame.h"
@@ -1609,7 +1612,7 @@
 	"wx/app.h"
 	"wx/icon.h"
 
-1340291617 source:/home/song/digitrecog/src/VertScan.cpp
+1340332067 source:/home/song/digitrecog/src/VertScan.cpp
 	<cstdio>
 	<algorithm>
 	<VertScan.h>
@@ -1619,16 +1622,20 @@
 	<vector>
 	<utility>
 
-1340291617 source:/home/song/digitrecog/src/Recognize.cpp
+1340335482 source:/home/song/digitrecog/src/Recognize.cpp
 	<cstdio>
 	<vector>
+	<algorithm>
 	<VertScan.h>
 	<HoriScan.h>
+	<NineGrids.h>
 	<Recognize.h>
 	<RecogUtils.h>
 	<Characteristic.h>
 
-1340268556 /home/song/digitrecog/include/Recognize.h
+1340335482 /home/song/digitrecog/include/Recognize.h
+	<vector>
+	<utility>
 
 1340259797 /home/yue/digitrecog/include/DerivedMainFrame.h
 	"MainFrame.h"
@@ -1703,15 +1710,16 @@
 	"wx/window.h"
 	"wx/containr.h"
 
-1340291617 source:/home/song/digitrecog/src/Characteristic.cpp
+1340332067 source:/home/song/digitrecog/src/Characteristic.cpp
 	<cstdio>
 	<utility>
 	<Characteristic.h>
 
-1340291617 /home/song/digitrecog/include/Characteristic.h
+1340332067 /home/song/digitrecog/include/Characteristic.h
 	<cstdio>
 	<VertScan.h>
 	<HoriScan.h>
+	<NineGrids.h>
 
 1340291617 /home/song/digitrecog/include/HoriScan.h
 	<vector>
@@ -1723,10 +1731,20 @@
 	<HoriScan.h>
 	<RecogUtils.h>
 
-1340291617 /home/song/digitrecog/include/RecogUtils.h
+1340335482 /home/song/digitrecog/include/RecogUtils.h
 
-1340291617 source:/home/song/digitrecog/src/RecogUtils.cpp
+1340335482 source:/home/song/digitrecog/src/RecogUtils.cpp
 	<climits>
 	<algorithm>
+	<RecogUtils.h>
+
+1340332067 /home/song/digitrecog/include/NineGrids.h
+
+1340332067 source:/home/song/digitrecog/src/NineGrids.cpp
+	<cmath>
+	<cstdio>
+	<cfloat>
+	<algorithm>
+	<NineGrids.h>
 	<RecogUtils.h>
 

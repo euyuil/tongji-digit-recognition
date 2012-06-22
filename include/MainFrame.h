@@ -42,7 +42,7 @@ class Board;
 #define wxID_Number8 1018
 #define wxID_Number9 1019
 
-
+#include <vector>
 
 class UpdateDisplayClass;
 ///////////////////////////////////////////////////////////////////////////////
@@ -63,6 +63,8 @@ class MainFrame : public wxFrame
 		wxMenu* Menu_Learn;
 		wxMenu* Menu_Help;
         UpdateDisplayClass *updateTimer;
+
+        std::vector<std::pair<char, double> >  possibleOrder;
 
         // Virtual event handlers
 		virtual void Clean( wxCommandEvent& event );

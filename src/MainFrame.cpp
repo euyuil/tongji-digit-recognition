@@ -20,11 +20,20 @@ class UpdateDisplayClass : public wxTimer
         wxStaticText* label;
 		Board* board;
 		MainFrame *mainFrame;
+		std::vector<std::pair<char, double> >  *possibleOrder;
+        int *numberOrderArray;
+
         void Notify()
         {
             if(board->isNeedDisplay())
             {
                 label->SetLabel(wxString::Format(wxT("%c"),board->getRecognizedChar()));
+
+                for(int i = 0; i <= 9; i++)
+                {
+                    numberOrderArray[i] = (*possibleOrder)[i].first - '0';
+                }
+
                 mainFrame->implementToolbar();
             }
         }
@@ -97,6 +106,8 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
 
 
 	m_panel2 = new Board( this );
+	m_panel2->possibleOrder = &possibleOrder;
+
 	gSizer1->Add( m_panel2, 1, wxEXPAND | wxALL, 5 );
 
 	bSizer3->Add( gSizer1, 1, wxEXPAND, 5 );
@@ -117,6 +128,8 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
     updateTimer->board = m_panel2;
     updateTimer->label = m_resultLabel;
     updateTimer->mainFrame = this;
+    updateTimer->possibleOrder = &possibleOrder;
+    updateTimer->numberOrderArray = numberOrderArray;
     updateTimer->Start(100);
 
     if(!LoadLearning())
@@ -126,7 +139,7 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
 
     for(int i = 0; i < 10; i++)
     {
-        numberOrderArray[i] = 9-i;
+        numberOrderArray[i] = i;
     }
     implementToolbar();
 

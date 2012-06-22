@@ -7,6 +7,10 @@
  * @date 2012-06-21
  */
 
+#include <vector>
+#include <utility>
+
+using namespace std;
 
 /**
  * Learn the pattern.
@@ -33,6 +37,20 @@ bool LearnPattern(char r, const char *c, unsigned int w, unsigned int h);
  */
 
 char Recognize(const char *c, unsigned int w, unsigned int h);
+
+
+/**
+ * Recognize the pattern, ordered by possibilities.
+ * @param c The pattern matrix.
+ * @param w The width of the matrix.
+ * @param h The height of the matrix.
+ * @return The recognized vector.
+ * @author EUYUIL
+ * @date 2012-06-22
+ */
+
+vector<pair<char, double> > RecognizePossibility(
+    const char *c, unsigned int w, unsigned int h);
 
 
 /**

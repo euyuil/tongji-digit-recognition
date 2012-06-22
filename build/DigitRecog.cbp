@@ -50,6 +50,7 @@
 		<Unit filename="../include/GUIFrame.h" />
 		<Unit filename="../include/HoriScan.h" />
 		<Unit filename="../include/MainFrame.h" />
+		<Unit filename="../include/NineGrids.h" />
 		<Unit filename="../include/RecogUtils.h" />
 		<Unit filename="../include/Recognize.h" />
 		<Unit filename="../include/VertScan.h" />
@@ -62,6 +63,7 @@
 		<Unit filename="../src/GUIFrame.cpp" />
 		<Unit filename="../src/HoriScan.cpp" />
 		<Unit filename="../src/MainFrame.cpp" />
+		<Unit filename="../src/NineGrids.cpp" />
 		<Unit filename="../src/RecogUtils.cpp" />
 		<Unit filename="../src/Recognize.cpp" />
 		<Unit filename="../src/VertScan.cpp" />

@@ -17,6 +17,11 @@ bool foutch(FILE *f, const CHARACTER &c)
         fprintf(f, " %lf %u", c.hs[i].first, c.hs[i].second);
     fprintf(f, "\n");
 
+    fprintf(f, "9");
+    for (unsigned int i = 0; i < 9; ++i)
+        fprintf(f, " %lf", *((double *)c.ng + i));
+    fprintf(f, "\n");
+
     return true;
 }
 
@@ -41,6 +46,10 @@ bool finch(FILE *f, CHARACTER &c)
         fscanf(f, "%lf %u", &s, &t);
         c.hs.push_back(make_pair(s, t));
     }
+
+    fscanf(f, "%u", &n);
+    for (unsigned int i = 0; i < 9; ++i)
+        fscanf(f, "%lf", (double *)c.ng + i);
 
     return true;
 }

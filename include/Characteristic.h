@@ -7,11 +7,13 @@ using namespace std;
 
 #include <VertScan.h>
 #include <HoriScan.h>
+#include <NineGrids.h>
 
 struct CHARACTERISTIC
 {
     VS_NORM_RESULT vs;
     HS_NORM_RESULT hs;
+    NG_RESULT ng;
 };
 
 typedef CHARACTERISTIC CHARACTER;

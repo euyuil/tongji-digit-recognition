@@ -1628,7 +1628,7 @@
 1340259797 /home/yue/digitrecog/include/DerivedMainFrame.h
 	"MainFrame.h"
 
-1340281209 source:/home/yue/digitrecog/src/VertScan.cpp
+1340291085 source:/home/yue/digitrecog/src/VertScan.cpp
 	<cstdio>
 	<algorithm>
 	<VertScan.h>
@@ -1640,12 +1640,15 @@
 
 1340268451 /home/yue/digitrecog/include/Recognize.h
 
-1340277290 source:/home/yue/digitrecog/src/Recognize.cpp
+1340330179 source:/home/yue/digitrecog/src/Recognize.cpp
 	<cstdio>
 	<vector>
 	<VertScan.h>
+	<HoriScan.h>
+	<NineGrids.h>
 	<Recognize.h>
 	<RecogUtils.h>
+	<Characteristic.h>
 
 1340275610 source:/home/yue/digitrecog/src/RecogUtils.cpp
 	<climits>
@@ -1664,13 +1667,24 @@
 	<vector>
 	<utility>
 
-1340284041 source:/home/yue/digitrecog/src/Characteristic.cpp
+1340330443 source:/home/yue/digitrecog/src/Characteristic.cpp
 	<cstdio>
 	<utility>
 	<Characteristic.h>
 
-1340284021 /home/yue/digitrecog/include/Characteristic.h
+1340330164 /home/yue/digitrecog/include/Characteristic.h
 	<cstdio>
 	<VertScan.h>
 	<HoriScan.h>
+	<NineGrids.h>
+
+1340331100 source:/home/yue/digitrecog/src/NineGrids.cpp
+	<cmath>
+	<cstdio>
+	<cfloat>
+	<algorithm>
+	<NineGrids.h>
+	<RecogUtils.h>
+
+1340293909 /home/yue/digitrecog/include/NineGrids.h
 

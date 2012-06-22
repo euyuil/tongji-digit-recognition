@@ -8,7 +8,6 @@ using namespace std;
 
 /**
  * Vertical scanning algorithm for digital recognizing.
- * TODO Test this function.
  * @author EUYUIL
  * @date 2012-06-19
  */

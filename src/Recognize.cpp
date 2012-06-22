@@ -5,6 +5,7 @@ using namespace std;
 
 #include <VertScan.h>
 #include <HoriScan.h>
+#include <NineGrids.h>
 #include <Recognize.h>
 #include <RecogUtils.h>
 #include <Characteristic.h>
@@ -67,6 +68,7 @@ char Recognize(const char *c, unsigned int w, unsigned int h)
 {
     VS_NORM_RESULT vsr = VertScanNormalize(VertScan(c, w, h));
     HS_NORM_RESULT hsr = HoriScanNormalize(HoriScan(c, w, h));
+    NG_RESULT ngr; NineGridScan(c, w, h, ngr);
 
     double mxr = 0.0; char mxc = '\0';
 
@@ -78,8 +80,9 @@ char Recognize(const char *c, unsigned int w, unsigned int h)
         {
             VS_COMP_RESULT v = VertScanCompare(vsr, chs[i][j].vs);
             HS_COMP_RESULT h = HoriScanCompare(hsr, chs[i][j].hs);
+            NG_COMP_RESULT g = NineGridCompare(ngr, chs[i][j].ng);
 
-            double r = v * h;
+            double r = v * h * g;
 
             if (r > mxr)
             {

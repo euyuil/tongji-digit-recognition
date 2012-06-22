@@ -1544,7 +1544,7 @@
 	<wx/wx.h>
 	<wx/menu.h>
 
-1340343407 source:/home/yue/digitrecog/src/MainFrame.cpp
+1340385481 source:/home/yue/digitrecog/src/MainFrame.cpp
 	"Board.h"
 	"Recognize.h"
 	"MainFrame.h"

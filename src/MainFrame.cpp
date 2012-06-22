@@ -137,11 +137,7 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
         printf("fuck! load error\n");
     }
 
-    for(int i = 0; i < 10; i++)
-    {
-        numberOrderArray[i] = i;
-    }
-    implementToolbar();
+    initToolBarNumbers();
 
     this->Connect( wxID_Number0, wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler( MainFrame::Learn0 ));
     this->Connect( wxID_Number1, wxEVT_COMMAND_TOOL_CLICKED, wxCommandEventHandler( MainFrame::Learn1 ));
@@ -156,6 +152,16 @@ MainFrame::MainFrame( wxWindow* parent, wxWindowID id, const wxString& title, co
 
 
 }
+
+void MainFrame::initToolBarNumbers()
+{
+    for(int i = 0; i < 10; i++)
+    {
+        numberOrderArray[i] = i;
+    }
+    implementToolbar();
+}
+
 
 void MainFrame::implementToolbar()
 {
@@ -183,10 +189,18 @@ MainFrame::~MainFrame()
     delete updateTimer;
 }
 
-void MainFrame::Clean( wxCommandEvent& event )
+void MainFrame::doClean()
 {
     printf("clean\n");
     m_panel2->cleanCanvas();
+    initToolBarNumbers();
+}
+
+
+void MainFrame::Clean( wxCommandEvent& event )
+{
+    doClean();
+    m_resultLabel->SetLabel(wxString::Format(wxT(" ")));
 }
 
 void MainFrame::Learn1( wxCommandEvent& event )
@@ -234,7 +248,8 @@ void MainFrame::LearnNumber( int number )
 {
     if(m_panel2->Learn(number + '0'))
     {
-        m_panel2->cleanCanvas();
+        doClean();
+        m_resultLabel->SetLabel(wxString::Format(wxT("%c"),number + '0'));
         //m_panel2->SetLabel(wxString::Format(wxT("Now I know it is %c"),number + '0'));
     }
 }

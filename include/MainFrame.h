@@ -87,7 +87,9 @@ class MainFrame : public wxFrame
 
         int numberOrderArray[10];
 
+        void doClean();
 
+        void initToolBarNumbers();
 
 	public:
         void implementToolbar();

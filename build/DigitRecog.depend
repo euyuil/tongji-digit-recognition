@@ -1568,7 +1568,7 @@
 	"DigitRecog.h"
 	"MainFrame.h"
 
-1340335749 /home/song/digitrecog/include/MainFrame.h
+1340342862 /home/song/digitrecog/include/MainFrame.h
 	<wx/statusbr.h>
 	<wx/gdicmn.h>
 	<wx/font.h>
@@ -1599,7 +1599,7 @@
 	<wx/wx.h>
 	<wx/menu.h>
 
-1340336623 source:/home/song/digitrecog/src/MainFrame.cpp
+1340342860 source:/home/song/digitrecog/src/MainFrame.cpp
 	"Board.h"
 	"Recognize.h"
 	"MainFrame.h"
